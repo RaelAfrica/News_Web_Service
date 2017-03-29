@@ -15,36 +15,26 @@ class NewsDetailViewController: UIViewController
     @IBOutlet var authorLabel:UILabel?;
     @IBOutlet var webView:UIWebView?;
     
-    var author:String?;
-
+    var article:Article?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        webView?.loadRequest(URLRequest(url: URL(string:"https://members.learnappmaking.com/module_2_lorem.html")!));
-        
-        titleLabel?.text = self.title;
-        
-        if(author != nil)
+        if article == nil
         {
-            authorLabel?.text = "Author: \(author!)";
+            return
         }
+        
+        titleLabel?.text = article?.title
+        authorLabel?.text = article!.author
+        
+        webView?.loadHTMLString(article!.content, baseURL: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

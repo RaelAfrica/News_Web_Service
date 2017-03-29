@@ -90,8 +90,10 @@ class NewsTableViewController: UITableViewController
     {
         // Create a new detail view controller
         var detailVC:NewsDetailViewController = NewsDetailViewController(nibName: "NewsDetailViewController", bundle:nil);
-        detailVC.author = authors[indexPath.row];
-        detailVC.title = titles[indexPath.row];
+        
+        if let article:Article = articles[indexPath.row] {
+            detailVC.article = article
+        }
         
         // Push the the detail view controller on the view controller stack
         navigationController?.pushViewController(detailVC, animated:true);
