@@ -10,6 +10,9 @@ import UIKit
 
 class NewsTableViewController: UITableViewController
 {
+    
+    var articles:[Article] = [Article]()
+    
     /// Property with news item titles
     var titles:[String] = [
         "New York Lakers Score Again!",
@@ -34,7 +37,18 @@ class NewsTableViewController: UITableViewController
     {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onArticlesReceived(notification:)), name: API.articlesReceivedNotification, object: nil)
+        
         API.sharedInstance.requestArticles()
+    }
+
+    func onArticlesReceived(notification:Notification)
+    {
+        if let articles:[Article] = notification.object as? [Article]
+        {
+            self.articles = articles
+            self.tableView.reloadData()
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int
@@ -48,7 +62,7 @@ class NewsTableViewController: UITableViewController
     {
         // How many rows are there in the 1 section?
         
-        return titles.count;
+        return articles.count;
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -62,12 +76,15 @@ class NewsTableViewController: UITableViewController
             cell = UITableViewCell(style:UITableViewCellStyle.subtitle, reuseIdentifier:"cellIdentifier");
         }
         
+        if let articles:Article = articles[indexPath.row] {
         // Set the text and detail text
-        cell!.textLabel?.text = titles[indexPath.row];
-        cell!.detailTextLabel?.text = authors[indexPath.row];
-
+        cell!.textLabel?.text = articles.title;
+        cell!.detailTextLabel?.text = articles.excerpt;
+        }
+        
         return cell!;
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {

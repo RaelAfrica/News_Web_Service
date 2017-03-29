@@ -15,6 +15,7 @@ private let _API_SharedInstance = API()
 class API {
     
     static let Feed_JSON_URL:URL = URL(string: "https://learnappmaking.com/feed/json")!
+    static let articlesReceivedNotification = Notification.Name("articlesReceived")
     
     class var sharedInstance: API
     {
@@ -91,6 +92,11 @@ class API {
         }
         
         print(articles)
+        
+        if articles.count > 0
+        {
+            NotificationCenter.default.post(name: API.articlesReceivedNotification, object:articles)
+        }
     }
     
 }
