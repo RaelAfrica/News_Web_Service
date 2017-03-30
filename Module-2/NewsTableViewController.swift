@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NewsTableViewController: UITableViewController
 {
     
-    var articles:[Article] = [Article]()
+    var articles: Results<Article>
+        {
+        get {
+            let realm = try! Realm()
+            
+            return realm.objects(Article.self)
+        }
+    }
     
     /// Property with news item titles
     var titles:[String] = [
@@ -44,11 +52,7 @@ class NewsTableViewController: UITableViewController
 
     func onArticlesReceived(notification:Notification)
     {
-        if let articles:[Article] = notification.object as? [Article]
-        {
-            self.articles = articles
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int
@@ -62,7 +66,7 @@ class NewsTableViewController: UITableViewController
     {
         // How many rows are there in the 1 section?
         
-        return articles.count;
+        return articles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -76,10 +80,10 @@ class NewsTableViewController: UITableViewController
             cell = UITableViewCell(style:UITableViewCellStyle.subtitle, reuseIdentifier:"cellIdentifier");
         }
         
-        if let articles:Article = articles[indexPath.row] {
-        // Set the text and detail text
-        cell!.textLabel?.text = articles.title;
-        cell!.detailTextLabel?.text = articles.excerpt;
+        if let article:Article = articles[indexPath.row]
+        {
+            cell!.textLabel?.text = article.title
+            cell!.detailTextLabel?.text = article.excerpt
         }
         
         return cell!;

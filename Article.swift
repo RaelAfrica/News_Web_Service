@@ -7,20 +7,21 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Article: CustomStringConvertible
+class Article: Object
 {
-    var id:Int = 0
-    var title:String = ""
-    var author:String = ""
-    var content:String = ""
-    var thumbnailURL:String = ""
-    var articleURL:String = ""
-    var excerpt:String = ""
-    var creationDate:Date = Date()
+    dynamic var id:Int = 0
+    dynamic var title:String = ""
+    dynamic var author:String = ""
+    dynamic var content:String = ""
+    dynamic var thumbnailURL:String = ""
+    dynamic var articleURL:String = ""
+    dynamic var excerpt:String = ""
+    dynamic var creationDate:Date = Date()
     
-    var description:String {
-        return "Article: \(self.creationDate) -- \(self.title) -- \(self.articleURL)"
+    override static func primaryKey() -> String? {
+        return "id"
     }
 }
 

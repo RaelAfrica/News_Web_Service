@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 private let _API_SharedInstance = API()
 
@@ -48,7 +49,8 @@ class API {
         let dateFormatter:DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         
-        var articles:[Article] = [Article]()
+        let realm = try! Realm()
+        realm.beginWrite()
         
         for (key, item):(String, JSON) in json
         {
@@ -88,15 +90,19 @@ class API {
                 article.creationDate = creationDate
             }
             
-            articles += [article]
+            realm.add(article, update: true)
         }
         
-        print(articles)
-        
-        if articles.count > 0
+        do {
+            try realm.commitWrite()
+            print("Committing write...")
+        }
+        catch (let e)
         {
-            NotificationCenter.default.post(name: API.articlesReceivedNotification, object:articles)
+            print("Y U NO REALM ?\(e)")
         }
+        
+        NotificationCenter.default.post(name: API.articlesReceivedNotification, object:nil)
     }
     
 }
