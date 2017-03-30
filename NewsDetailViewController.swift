@@ -27,6 +27,12 @@ class NewsDetailViewController: UIViewController, UIWebViewDelegate
             return
         }
         
+        let build = GAIDictionaryBuilder.createAppView().set("News Detail", forKey: kGAIScreenName).build() as NSDictionary
+        GAI.sharedInstance().defaultTracker.send(build as [NSObject : AnyObject])
+        
+        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEvent(withCategory: "ui_action", action: "article_view", label: article!.title, value: nil).build() as [NSObject : AnyObject])
+        
+        
         titleLabel?.text = article?.title
         imageView?.image = nil
         authorLabel?.text = article!.author

@@ -6,6 +6,7 @@ target "Module-2" do
 pod 'Alamofire', '4.0.0'
 pod 'SwiftyJSON', '3.0.0'
 pod 'RealmSwift', '1.1.0'
+pod 'GoogleAnalytics-iOS-SDK', '3.10'
 end
 
 post_install do |installer|

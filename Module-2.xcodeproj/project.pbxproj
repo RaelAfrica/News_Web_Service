@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1F9E953C1E8C0BB7001DBA9B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1F9E953B1E8C0BB7001DBA9B /* Podfile */; };
+		1FA2123A1E8D68B100A66653 /* Objective-CBridgingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA212391E8D68B100A66653 /* Objective-CBridgingHeader.m */; };
+		1FA2123C1E8D690A00A66653 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA2123B1E8D690A00A66653 /* SystemConfiguration.framework */; };
+		1FA2123E1E8D695C00A66653 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA2123D1E8D695C00A66653 /* libz.tbd */; };
 		1FC392501E8C29C600E1B399 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC3924F1E8C29C600E1B399 /* Article.swift */; };
 		1FCE95541E8C13EF00F5C3E9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE95531E8C13EF00F5C3E9 /* API.swift */; };
 		945C3F33D8180A2D58170789 /* Pods_Module_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212271A13DBB3A03C372E0BC /* Pods_Module_2.framework */; };
@@ -21,6 +24,10 @@
 
 /* Begin PBXFileReference section */
 		1F9E953B1E8C0BB7001DBA9B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		1FA212381E8D68B100A66653 /* Module-2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Module-2-Bridging-Header.h"; sourceTree = "<group>"; };
+		1FA212391E8D68B100A66653 /* Objective-CBridgingHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Objective-CBridgingHeader.m"; sourceTree = "<group>"; };
+		1FA2123B1E8D690A00A66653 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1FA2123D1E8D695C00A66653 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		1FC3924F1E8C29C600E1B399 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Article.swift; path = ../Article.swift; sourceTree = "<group>"; };
 		1FCE95531E8C13EF00F5C3E9 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		212271A13DBB3A03C372E0BC /* Pods_Module_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Module_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FA2123E1E8D695C00A66653 /* libz.tbd in Frameworks */,
+				1FA2123C1E8D690A00A66653 /* SystemConfiguration.framework in Frameworks */,
 				945C3F33D8180A2D58170789 /* Pods_Module_2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +88,8 @@
 		43A4BDF0B317EFAF6557E77C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FA2123D1E8D695C00A66653 /* libz.tbd */,
+				1FA2123B1E8D690A00A66653 /* SystemConfiguration.framework */,
 				212271A13DBB3A03C372E0BC /* Pods_Module_2.framework */,
 			);
 			name = Frameworks;
@@ -87,6 +98,8 @@
 		D1D05A551AC956AC0092EF26 = {
 			isa = PBXGroup;
 			children = (
+				1FA212391E8D68B100A66653 /* Objective-CBridgingHeader.m */,
+				1FA212381E8D68B100A66653 /* Module-2-Bridging-Header.h */,
 				1F9E953B1E8C0BB7001DBA9B /* Podfile */,
 				D1D05A601AC956AC0092EF26 /* Module-2 */,
 				D1D05A5F1AC956AC0092EF26 /* Products */,
@@ -162,7 +175,7 @@
 					D1D05A5D1AC956AC0092EF26 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = 72GD393958;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -251,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FA2123A1E8D68B100A66653 /* Objective-CBridgingHeader.m in Sources */,
 				D1D05A641AC956AC0092EF26 /* AppDelegate.swift in Sources */,
 				D1D05A841AC958160092EF26 /* NewsTableViewController.swift in Sources */,
 				1FCE95541E8C13EF00F5C3E9 /* API.swift in Sources */,
@@ -354,11 +368,14 @@
 			baseConfigurationReference = 95971E547E57F7EADAC6B89C /* Pods-Module-2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 72GD393958;
 				INFOPLIST_FILE = "Module-2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.learnappmaking.module-2-news";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Module-2-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -368,11 +385,13 @@
 			baseConfigurationReference = 473FA25DA3ABD6F408F9036F /* Pods-Module-2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 72GD393958;
 				INFOPLIST_FILE = "Module-2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.learnappmaking.module-2-news";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Module-2-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

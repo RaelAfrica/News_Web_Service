@@ -14,7 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     var window: UIWindow?;
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
-    {        
+    {
+        GAI.sharedInstance().trackUncaughtExceptions = true
+        GAI.sharedInstance().dispatchInterval = 20
+        GAI.sharedInstance().logger.logLevel = GAILogLevel.verbose
+        GAI.sharedInstance().tracker(withTrackingId: "UA-96494705-1")
+        
         // Create the news table view controller
         var newsVC:NewsTableViewController = NewsTableViewController();
         newsVC.title = "News";
