@@ -91,7 +91,8 @@ class NewsTableViewController: UITableViewController
         // Create a new detail view controller
         var detailVC:NewsDetailViewController = NewsDetailViewController(nibName: "NewsDetailViewController", bundle:nil);
         
-        if let article:Article = articles[indexPath.row] {
+        if let article:Article = articles[indexPath.row]
+        {
             detailVC.article = article
         }
         
