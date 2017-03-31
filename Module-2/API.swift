@@ -16,6 +16,7 @@ private let _API_SharedInstance = API()
 class API {
     
     static let Feed_JSON_URL:URL = URL(string: "https://learnappmaking.com/feed/json")!
+    
     static let articlesReceivedNotification = Notification.Name("articlesReceived")
     
     class var sharedInstance: API
@@ -46,11 +47,11 @@ class API {
     func processArticles(json: JSON)
     {
         
-        let dateFormatter:DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        
         let realm = try! Realm()
         realm.beginWrite()
+        
+        let dateFormatter:DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         
         for (key, item):(String, JSON) in json
         {

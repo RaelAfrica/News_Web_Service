@@ -37,9 +37,10 @@ class NewsDetailViewController: UIViewController, UIWebViewDelegate
         imageView?.image = nil
         authorLabel?.text = article!.author
         
-        webView?.delegate = self
+        
         webView?.loadHTMLString("<html><head><style>body { font-family: Helvetica; }</style></head><body>\(article!.content)</body></html>", baseURL: nil)
-        webView?.scrollView.isScrollEnabled = false
+        webView?.delegate = self
+//        webView?.scrollView.isScrollEnabled = false
         
         if let thumbnailURL:URL = URL(string:article!.thumbnailURL)
         {
@@ -51,6 +52,7 @@ class NewsDetailViewController: UIViewController, UIWebViewDelegate
                 }
             }
         }
+    }
     
     
     func webViewDidFinishLoad(_ webView: UIWebView)
@@ -65,10 +67,6 @@ class NewsDetailViewController: UIViewController, UIWebViewDelegate
     }
     
 }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
-}
+
+

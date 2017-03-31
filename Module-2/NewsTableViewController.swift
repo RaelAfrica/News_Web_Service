@@ -21,26 +21,7 @@ class NewsTableViewController: UITableViewController
         }
     }
     
-    /// Property with news item titles
-    var titles:[String] = [
-        "New York Lakers Score Again!",
-        "Apple Presents New iWatch",
-        "Deeplink.me Wants To Break Open App Discovery",
-        "Silly Cat Attempts Jump And Hits Air",
-        "New MacBook Air So Thin People Can't See It",
-        "Higgs-Boson Finally Discovered In Scientists Coat"
-    ];
     
-    /// Property with news item authors
-    var authors:[String] = [
-        "Bob",
-        "Alice",
-        "Reinder",
-        "[Your name]",
-        "Ford",
-        "Zaphod"
-    ];
-
     override func viewDidLoad()
     {
         super.viewDidLoad()
